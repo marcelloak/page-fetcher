@@ -17,11 +17,11 @@ const fetcher = () => {
       process.exit();
     } 
     fs.readFile(path, (err, data) => {
-      if (!data || err) {
+      if (data === null) {
         console.log("File path invalid.");
         process.exit();
       }
-      if (data.length !== 0) {
+      if (data) {
         rl.question('Overwrite? Y/N ', (answer) => {
           if (answer !== "Y" && answer !== "y") {
             console.log('File already there.')
